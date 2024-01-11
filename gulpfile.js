@@ -13,6 +13,7 @@ const zip = require('gulp-zip');
 const easyimport = require('postcss-easy-import');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const file = require('./package.json');
 
 function serve(done) {
     livereload.listen();
@@ -64,7 +65,8 @@ function js(done) {
 }
 
 function zipper(done) {
-    const filename = require('./package.json').name + '.zip';
+    const file = require('./package.json');
+    const filename = `${file.name}@${file.version}.zip`;
 
     pump([
         src([
