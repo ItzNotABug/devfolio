@@ -1,0 +1,194 @@
+{
+  "name": "devfolio",
+  "description": "A developer portfolio styled theme for Ghost",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "@itznotabug",
+    "email": "itznotabug@gmail.com",
+    "url": "https://itznotabug.dev"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 10,
+    "image_sizes": {
+      "xs": {
+        "width": 150
+      },
+      "s": {
+        "width": 400
+      },
+      "m": {
+        "width": 750
+      },
+      "l": {
+        "width": 960
+      },
+      "xl": {
+        "width": 1140
+      },
+      "xxl": {
+        "width": 1920
+      }
+    },
+    "card_assets": true,
+    "custom": {
+      "title_font": {
+        "type": "select",
+        "options": [
+          "Modern sans-serif",
+          "Elegant serif"
+        ],
+        "default": "Modern sans-serif"
+      },
+      "body_font": {
+        "type": "select",
+        "options": [
+          "Modern sans-serif",
+          "Elegant serif"
+        ],
+        "default": "Modern sans-serif"
+      },
+      "color_scheme": {
+        "type": "select",
+        "options": [
+          "Auto",
+          "Light",
+          "Dark"
+        ],
+        "default": "Auto"
+      },
+      "error_image": {
+        "type": "image",
+        "description": "Upload an image to use it for for 404 errors"
+      },
+      "contact_form_submit_url": {
+        "type": "text",
+        "default": "",
+        "description": "Add a url that accepts POST requests to capture contact form messages"
+      },
+      "use_tags_accent_color": {
+        "type": "boolean",
+        "default": true,
+        "description": "Uses assigned color for tags if enabled, theme accent color otherwise"
+      },
+      "dark_mode_background_color": {
+        "type": "color",
+        "default": "#282c35",
+        "description": "Set color scheme to dark for preview"
+      },
+      "light_mode_background_color": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "Set color scheme to light for preview"
+      },
+      "developer_headline": {
+        "type": "text",
+        "default": "A short headline here",
+        "group": "homepage",
+        "description": "Write a small headline, field supports HTML"
+      },
+      "developer_bio": {
+        "type": "text",
+        "default": "Experienced developer with a focus on mobile apps.<br>Exploring Node.js these days!",
+        "group": "homepage",
+        "description": "Write a detailed bio, field supports HTML"
+      },
+      "developer_skills": {
+        "type": "text",
+        "default": "Languages I know: Java, Kotlin, Swift, Dart, Javascript",
+        "group": "homepage",
+        "description": "Show-off your skills, field supports HTML"
+      },
+      "developer_github": {
+        "type": "text",
+        "default": "",
+        "group": "homepage"
+      },
+      "developer_linkedin": {
+        "type": "text",
+        "default": "",
+        "group": "homepage"
+      },
+      "developer_instagram": {
+        "type": "text",
+        "default": "",
+        "group": "homepage",
+        "description": "Note: X & Facebook links are in Author Profile settings."
+      },
+      "show_featured_posts": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage"
+      },
+      "featured_title": {
+        "type": "text",
+        "default": "Featured articles",
+        "group": "homepage"
+      },
+      "feature_image_height": {
+        "type": "select",
+        "default": "Horizontal",
+        "options": [
+          "Actual",
+          "Square",
+          "Rectangle",
+          "Horizontal"
+        ],
+        "group": "post",
+        "description": "This setting applies to pages as well, use a normal image instead of a feature image if needed"
+      },
+      "feature_image_display_style": {
+        "type": "select",
+        "default": "No feature image",
+        "options": [
+          "No feature image",
+          "Full width feature image",
+          "Narrow width feature image"
+        ],
+        "group": "post",
+        "description": "This setting applies to pages as well, use a normal image instead of a feature image if needed"
+      },
+      "show_related_posts": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      },
+      "enable_post_navigation": {
+        "type": "boolean",
+        "default": true,
+        "group": "post",
+        "description": "Enables navigation links (Previous, Next) at the bottom of each post"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "gulp",
+    "test": "gscan .",
+    "zip": "gulp zip"
+  },
+  "devDependencies": {
+    "@tryghost/shared-theme-assets": "2.4.2",
+    "autoprefixer": "10.4.16",
+    "beeper": "2.1.0",
+    "cssnano": "6.0.1",
+    "gscan": "4.42.0",
+    "gulp": "4.0.2",
+    "gulp-concat": "2.6.1",
+    "gulp-livereload": "4.0.2",
+    "gulp-postcss": "9.0.1",
+    "gulp-uglify": "3.0.2",
+    "gulp-zip": "5.1.0",
+    "postcss": "8.4.32",
+    "postcss-easy-import": "4.0.0",
+    "pump": "3.0.0"
+  }
+}

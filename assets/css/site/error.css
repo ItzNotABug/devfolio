@@ -1,0 +1,41 @@
+.error-message {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error-image {
+    height: 200px;
+    margin: 0 auto 18px auto;
+}
+
+.error-code {
+    margin: 2rem;
+    font-size: 10vw;
+    font-weight: 600;
+    line-height: .9em;
+    letter-spacing: -.4vw;
+}
+
+.error-description {
+    padding: 0;
+    border: none;
+    margin: 2rem;
+    font-size: 2.3rem;
+    font-weight: 300;
+    line-height: 1.3em;
+}
+
+.error-link {
+    text-decoration: none;
+    color: var(--brand-color);
+    background-color: transparent;
+    transition: background .3s, color .3s;
+}
+
+.error-message a {
+    margin: 8px 0;
+    line-height: 1;
+    font-size: 1.4rem;
+}

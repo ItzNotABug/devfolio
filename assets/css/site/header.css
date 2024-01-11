@@ -1,0 +1,22 @@
+.gh-canvas {
+    --main: min(100% - var(--gap) * 2);
+}
+
+.gh-inner {
+    margin: 0 auto 0 0;
+}
+
+.gh-head-logo {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.gh-head-menu,
+.gh-head-actions {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.gh-head-site-title {
+    font-weight: 600;
+}

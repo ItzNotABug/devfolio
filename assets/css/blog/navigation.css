@@ -1,0 +1,28 @@
+.navigation-previous .navigation-icon {
+    margin-left: -2px;
+}
+
+.navigation-next .navigation-link {
+    justify-content: flex-end;
+}
+
+.navigation-next .navigation-icon {
+    margin-right: -2px;
+}
+
+.navigation-link {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+}
+
+.navigation-next-previous-title {
+    margin-top: 4px;
+}
+
+@media (max-width: 767px) {
+    .nav-current a {
+        color: var(--brand-color)
+    }
+}

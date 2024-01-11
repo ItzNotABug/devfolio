@@ -1,0 +1,74 @@
+<div class="cover gh-outer">
+    <div class="cover-content gh-inner">
+        {{#if @site.logo}}
+            <div class="cover-icon">
+                <img class="cover-icon-image" src="{{@site.logo}}" alt="{{@site.title}}">
+            </div>
+        {{else if @site.icon}}
+            <div class="cover-icon">
+                <img class="cover-icon-image" src="{{@site.icon}}" alt="{{@site.title}}">
+            </div>
+        {{else}}
+            <h3 class="no-cover-site-title">{{@site.title}}</h3>
+        {{/if}}
+
+        {{#get "authors" limit="1" as | authors |}}
+            {{#foreach authors}}
+                <div class="developer-socials">
+                    {{#if @custom.developer_github}}
+                        <a href="{{@custom.developer_github}}" target="_blank" rel="noopener noreferrer">
+                            {{> "icons/github"}}
+                        </a>
+                    {{/if}}
+
+                    {{#if @custom.developer_linkedin}}
+                        <a href="{{@custom.developer_linkedin}}" target="_blank" rel="noopener noreferrer">
+                            {{> "icons/linkedin"}}
+                        </a>
+                    {{/if}}
+
+                    {{#if @custom.developer_instagram}}
+                        <a href="{{@custom.developer_instagram}}" target="_blank" rel="noopener noreferrer">
+                            {{> "icons/instagram"}}
+                        </a>
+                    {{/if}}
+
+                    {{#if twitter}}
+                        <a href="https://twitter.com/{{twitter}}" target="_blank" rel="noopener noreferrer">
+                            {{> "icons/twitter"}}
+                        </a>
+                    {{/if}}
+
+                    {{#if facebook}}
+                        <a href="https://www.facebook.com/{{facebook}}" target="_blank" rel="noopener noreferrer">
+                            {{> "icons/facebook"}}
+                        </a>
+                    {{/if}}
+                </div>
+            {{/foreach}}
+        {{/get}}
+
+        {{#if @custom.developer_headline}}
+            <!-- supports html tags -->
+            <div class="cover-description">{{{@custom.developer_headline}}}</div>
+        {{else}}
+            {{#if @site.description}}
+                <div class="cover-description">{{@site.description}}</div>
+            {{/if}}
+        {{/if}}
+
+        <hr class="cover-divider">
+
+        {{#if @custom.developer_bio}}
+            <div class="cover-developer-content">{{{@custom.developer_bio}}}</div>
+
+            <hr class="cover-divider">
+        {{/if}}
+
+        {{#if @custom.developer_skills}}
+            <div class="cover-developer-content">{{{@custom.developer_skills}}}</div>
+
+            <hr class="cover-divider">
+        {{/if}}
+    </div>
+</div>

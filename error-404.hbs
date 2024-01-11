@@ -1,0 +1,14 @@
+{{!< default}}
+
+<main class="site-main">
+    <div class="error-message">
+        {{#if @custom.error_image}}
+            <img class="error-image" src="{{@custom.error_image}}" alt="{{statusCode}}">
+        {{else}}
+            <h1 class="error-code">{{statusCode}}</h1>
+        {{/if}}
+
+        <h2 class="error-description">{{message}}</h2>
+        <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+    </div>
+</main>

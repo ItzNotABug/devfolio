@@ -1,0 +1,12 @@
+routes:
+  /: default
+  /contact/: page-contact
+
+collections:
+  /blog/:
+    template: index
+    permalink: /blog/{slug}/
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

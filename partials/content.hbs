@@ -1,0 +1,106 @@
+<article class="single {{post_class}}">
+
+    {{#match @page.show_title_and_feature_image}}
+        <header class="single-header gh-canvas">
+            <h1 class="single-title" style="text-align:left; margin-bottom:1rem;">{{title}}</h1>
+            {{#is "post"}}
+                <div class="single-meta" style="text-align:left; margin-bottom:0;">
+                    <span class="single-meta-item single-meta-date">
+                    	<time datetime="{{date format="DD MMM, YYYY"}}">
+                            {{date published_at format="DD MMM, YY"}}
+                        </time>
+                	</span>
+                    {{#if reading_time}}
+                        <span class="single-meta-item single-meta-length">
+                            {{reading_time}}
+                        </span>
+                    {{/if}}
+                    {{#primary_tag}}
+                        <span class="single-meta-item single-meta-tag">
+                            <a class="post-tag post-tag-{{slug}}" href="{{url}}" style="color: {{#if
+                                    @custom.use_tags_accent_color}}{{accent_color}}{{else}}{{@site.accent_color}}{{/if}}">
+                                {{name}}
+                            </a>
+                        </span>
+                    {{/primary_tag}}
+                </div>
+            {{/is}}
+
+            {{#if feature_image}}
+                {{#match @custom.feature_image_display_style "!=" "No feature image"}}
+                    <figure class="single-media kg-width-{{#match @custom.feature_image_display_style
+                                                                  "Narrow width feature image"}}narrow{{else}}full{{/match}}">
+                        <div class="u-placeholder {{#match
+                                @custom.feature_image_height
+                                'Square'}}square{{else match @custom.feature_image_height 'Rectangle'}}rectangle{{else match @custom.feature_image_height 'Horizontal'}}horizontal{{else match @custom.feature_image_height 'Actual'}}actual{{/match}}">
+                            <img {{#match @custom.feature_image_height "!=" "Actual"}}class="u-object-fit"{{/match}}
+                                 srcset="{{> srcset}}"
+                                 sizes="(min-width: 1200px) 920px, 92vw"
+                                 src="{{img_url feature_image size="l"}}"
+                                 alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            >
+                        </div>
+
+                        {{#if feature_image_caption}}
+                            <figcaption>{{feature_image_caption}}</figcaption>
+                        {{/if}}
+                    </figure>
+                {{/match}}
+            {{/if}}
+        </header>
+    {{/match}}
+
+    <div class="single-content gh-content gh-canvas">
+        {{content}}
+        <!-- add a simple divider -->
+
+        <!-- public post, add divider at the end. -->
+        {{#has visibility="public"}}
+            <hr style="background-color: var(--lighter-gray-color)">
+        {{/has}}
+
+        <!-- member post, only show if the member is logged in. -->
+        {{#has all="@visibility.member, @member"}}
+            <hr style="background-color: var(--lighter-gray-color)">
+        {{/has}}
+    </div>
+
+    {{#is "post"}}
+        {{#if @custom.enable_post_navigation}}
+            <div class="gh-canvas">
+                <footer class="single-footer">
+
+                    <div class="single-footer-left">
+                        {{#prev_post}}
+                            <div class="navigation navigation-previous" style="display:flex; align-items:center;">
+                                <a class="navigation-link" href="{{url}}" aria-label="Previous post">
+                                    {{> "icons/arrow-left"}}
+                                </a>
+                            </div>
+
+                            <a href="{{url}}" aria-label="Previous post">
+                                <h6 class="navigation-next-previous-title">Previous Post</h6>
+                            </a>
+                        {{/prev_post}}
+                    </div>
+
+                    <div class="single-footer-right">
+                        {{#next_post}}
+                            <a href="{{url}}" aria-label="Next post">
+                                <h6 class="navigation-next-previous-title">Next Post</h6>
+                            </a>
+
+                            <div class="navigation navigation-next" style="display:flex; align-items:center;">
+                                <a class="navigation-link" href="{{url}}" aria-label="Next post">
+                                    {{> "icons/arrow-right"}}
+                                </a>
+                            </div>
+                        {{/next_post}}
+                    </div>
+
+                </footer>
+            </div>
+        {{/if}}
+    {{/is}}
+
+</article>

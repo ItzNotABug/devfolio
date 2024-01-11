@@ -1,0 +1,47 @@
+.tag {
+    text-align: center;
+}
+
+.tag-name {
+    font-size: 3rem;
+    margin-bottom: 0;
+    text-transform: lowercase;
+}
+
+.tag-name::before {
+    content: "#";
+}
+
+.tag-description {
+    max-width: 520px;
+    margin: 16px auto 0;
+}
+
+.tag-list {
+    margin-top: 2rem;
+    font-weight: 700;
+}
+
+.tag-list-label {
+    margin-right: 0.5rem;
+    color: var(--secondary-text-color);
+}
+
+.tag-list-item::before {
+    content: "#";
+}
+
+.tag-list-item + .tag-list-item {
+    margin-left: 0.3rem;
+}
+
+.tag-media {
+    margin-top: 4.5rem;
+}
+
+@media (max-width: 767px) {
+
+    .tag-media {
+        margin-top: 3rem;
+    }
+}

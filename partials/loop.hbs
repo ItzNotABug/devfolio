@@ -1,0 +1,29 @@
+<article class="feed {{visibility}} {{post_class}}">
+
+    <h2 class="feed-title">
+        {{title}}
+    </h2>
+
+    <div class="meta">
+        <div class="feed-calendar">
+            <div class="feed-calendar-date">
+                - {{date published_at format="DD MMM, YY"}}
+            </div>
+        </div>
+
+        {{#primary_tag}}
+            <span class="feed-tag">Posted in
+                <a href="{{url}}" style="color: {{#if
+                        @custom.use_tags_accent_color}}{{accent_color}}{{else}}{{@site.accent_color}}{{/if}}">
+                    #{{name}}
+                </a>
+            </span>
+        {{/primary_tag}}
+
+        <div class="feed-length">
+            {{reading_time}}
+        </div>
+    </div>
+    <a class="u-permalink" href="{{url}}" aria-label="{{title}}"></a>
+
+</article>

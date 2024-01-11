@@ -1,0 +1,77 @@
+{{!< default}}
+
+<main class="site-main">
+    <div class="custom-contact-form">
+        {{#if @custom.contact_form_submit_url}}
+            <div class="contact-form-friendly-message">
+                Feel free to send me a message via the form below, I usually reply within 24 hours 😄.
+            </div>
+
+            <form id="contact-form" class="contact-form" action="{{@custom.contact_form_submit_url}}" method="POST">
+                <label class="name-label" for="full-name">Name</label>
+                <input class="name-input" type="text" name="name" id="full-name" placeholder="Jamie Larson" required>
+
+                <label class="email-label" for="email-address">Email Address</label>
+                <input class="email-input" type="email" name="email-address" id="email-address"
+                       placeholder="Your email address" required>
+
+                <label class="message-label" for="message">Your Message</label>
+                <textarea class="message-input" rows="5" name="message" id="message" placeholder="Your message"
+                          required></textarea>
+
+                <button type="submit" class="submit-form-button">Send</button>
+
+                <span id="message-status" class="message-status"></span>
+            </form>
+
+            <!-- Add a custom script to manage form submission. -->
+            <script>
+                let contactForm = document.getElementById("contact-form");
+
+                async function submitContactForm(event) {
+                    event.preventDefault();
+
+                    let isSuccess;
+                    const formData = new FormData(event.target);
+                    const messageStatus = document.getElementById('message-status');
+
+                    try {
+                        const response = await fetch(event.target.action, {
+                            body: formData,
+                            method: event.target.method,
+                            headers: {'Accept': 'application/json'}
+                        });
+
+                        isSuccess = response.ok;
+                    } catch (error) {
+                        isSuccess = false;
+                        console.error(error);
+                    }
+
+                    if (isSuccess) {
+                        contactForm.reset();
+                        messageStatus.classList.add('success');
+                        messageStatus.textContent = 'Your message was sent successfully!';
+                    } else {
+                        messageStatus.classList.add('error');
+                        messageStatus.textContent = 'There was a problem sending your message.';
+                    }
+
+                    setTimeout(() => {
+                        messageStatus.textContent = '';
+                        messageStatus.classList.remove('success', 'error');
+                    }, 5000);
+                }
+
+                contactForm.addEventListener("submit", submitContactForm);
+            </script>
+
+        {{else}}
+            <span id="message-status" class="message-status no-post-url-error">
+                Uhh ohh! The contact form doesn't have a POST Url.
+                <br><br>
+                Did you forget to add the `Contact form submit url` in Theme Settings?
+            </span>
+        {{/if}}
+    </div>
+</main>

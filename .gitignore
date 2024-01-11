@@ -1,0 +1,9 @@
+# IntelliJ project files
+.idea
+*.iml
+
+# built theme
+dist
+
+# auto gen
+node_modules

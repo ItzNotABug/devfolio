@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html{{#match @custom.color_scheme "Dark"}} class="theme-dark"{{/match}}{{#match @custom.color_scheme "Light"}}
+                                            class="theme-light"{{/match}} lang="{{@site.locale}}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{meta_title}}</title>
+    <script>
+        // special case
+        if (window.location.pathname === '/blog/') document.title = 'Blog';
+    </script>
+
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <style>
+        /* light theme */
+        :root {
+            --color-white: {{@custom.light_mode_background_color}};
+            --white-color: var(--color-white);
+        }
+
+        /* dark theme */
+        @media (prefers-color-scheme: dark) {
+            html:not(.theme-light):root {
+                --color-white: {{@custom.dark_mode_background_color}};
+                --white-color: var(--color-white);
+            }
+        }
+    </style>
+
+    {{ghost_head}}
+</head>
+
+<body class='{{body_class}}{{{block "body_class"}}} is-head-left-logo{{#match @custom.title_font "="
+                                                                              "Elegant serif"}} has-serif-title{{/match}}{{#match
+        @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}'>
+<div class="site">
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                  	<span style="display:inline-flex;align-items:center;">
+                      <a class="gh-head-logo" href="{{@site.url}}">
+                        <h6 class="gh-head-site-title">{{@site.title}}</h6>
+                      </a>
+                  </span>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site"
+                        data-ghost-search>{{> "icons/search"}}</button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                {{navigation}}
+            </nav>
+
+            <div class="gh-head-actions">
+                {{#unless @site.members_enabled}}
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site"
+                            data-ghost-search>{{> "icons/search"}}</button>
+                {{else}}
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site"
+                            data-ghost-search>{{> "icons/search"}}</button>
+
+                    <div class="gh-head-members">
+                        {{#unless @member}}
+                            <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signin" data-portal="signin">Sign
+                                in</a>
+                        {{else}}
+                            <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/account" data-portal="account">Account</a>
+                        {{/unless}}
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    </header>
+
+    {{#is "home"}}
+        {{> "cover"}}
+
+        {{#if @custom.show_featured_posts}}
+            {{> "featured-posts"}}
+        {{/if}}
+    {{/is}}
+
+    <div class="site-content">
+        {{{body}}}
+    </div>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                {{@site.title}} © {{date format="YYYY"}}
+            </div>
+
+            {{#if @site.secondary_navigation}}
+                <nav class="gh-foot-menu">
+                    {{navigation type="secondary"}}
+                </nav>
+            {{else}}
+                <div class="empty_spacer"></div>
+            {{/if}}
+
+            <div class="gh-powered-by">
+                Theme <a href="https://github.com/itznotabug/devfolio" target="_blank">Devfolio</a>
+                • Published with <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+{{#is "post, page"}}
+    {{> "pswp"}}
+{{/is}}
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+</script>
+<script src='{{asset "built/main.min.js"}}'></script>
+
+{{ghost_foot}}
+
+</body>
+</html>
