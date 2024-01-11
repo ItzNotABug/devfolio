@@ -3,7 +3,8 @@
 }
 
 .gh-inner {
-    margin: 0 auto 0 0;
+    margin: 0 auto;
+    max-width: unset;
 }
 
 .gh-head-logo {

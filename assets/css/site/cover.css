@@ -35,7 +35,8 @@
     font-size: 1.75rem;
 }
 
-.cover-developer-content {
+.cover-developer-bio,
+.cover-developer-skills {
     text-align: left;
     margin-top: 32px;
     font-size: 1.75rem;

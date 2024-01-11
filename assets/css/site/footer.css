@@ -11,6 +11,9 @@
 
 .gh-foot-inner {
     gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .gh-foot a {
