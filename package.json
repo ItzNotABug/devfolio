@@ -1,7 +1,7 @@
 {
   "name": "devfolio",
   "description": "A developer portfolio styled theme for Ghost",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "engines": {
     "ghost": ">=5.0.0"
