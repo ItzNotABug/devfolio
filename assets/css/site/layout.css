@@ -6,15 +6,9 @@
 
 .site-content {
     flex-grow: 1;
-    padding-top: 2rem;
+    padding: 3rem 0 0 0;
 }
 
 .page-template .site-content {
     padding-block: 0;
-}
-
-@media (max-width: 767px) {
-    .site-content {
-        padding: 3rem 0;
-    }
 }

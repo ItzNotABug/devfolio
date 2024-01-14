@@ -12,6 +12,7 @@
 }
 
 .cover-content .cover-divider {
+    height: 0.5px;
     margin-top: 32px;
     background-color: var(--light-gray-color)
 }
@@ -56,4 +57,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.cover-content-author-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+    .cover-content {
+        margin: 0 auto;
+        max-width: unset;
+        flex-direction: row;
+        align-items: stretch;
+        padding: 2.5rem 10rem;
+        justify-content: space-between;
+    }
+
+    .cover-developer-bio {
+        margin-top: 0;
+    }
+
+    .cover-content-author-section,
+    .cover-content-author-info-section {
+        max-width: 50%;
+    }
+
+    .cover-content-author-section hr {
+        display: none;
+    }
 }
